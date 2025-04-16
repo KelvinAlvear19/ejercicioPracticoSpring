@@ -33,15 +33,24 @@ spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 spring.jpa.properties.hibernate.format_sql=true
 
-Método | Endpoint | Descripción
-GET | /api/v1/clientes/buscar?nombre=Alvear | Buscar clientes por nombre
-POST | /api/v1/clientes | Crear cliente con dirección principal
-PUT | /api/v1/clientes/{id} | Editar cliente por ID
-DELETE | /api/v1/clientes/{id} | Eliminar cliente por ID
-GET | /api/v1/clientes/{clienteId}/direcciones | Listar direcciones adicionales del cliente
+## 📡 Endpoints de la API
 
-Método | Endpoint | Descripción
-POST | /api/v1/direcciones/{numeroIdentificacion} | Registrar nueva dirección al cliente
+### 🔁 Clientes
+
+| Método | Endpoint                                     | Descripción                                      |
+|--------|----------------------------------------------|--------------------------------------------------|
+| GET    | `/api/v1/clientes/buscar?nombre=Alvear`      | Buscar clientes por nombre                       |
+| POST   | `/api/v1/clientes`                           | Crear cliente con dirección principal            |
+| PUT    | `/api/v1/clientes/{id}`                      | Editar cliente por ID                            |
+| DELETE | `/api/v1/clientes/{id}`                      | Eliminar cliente por ID                          |
+| GET    | `/api/v1/clientes/{clienteId}/direcciones`   | Listar direcciones adicionales del cliente       |
+
+### 📍 Direcciones
+
+| Método | Endpoint                                          | Descripción                            |
+|--------|---------------------------------------------------|----------------------------------------|
+| POST   | `/api/v1/direcciones/{numeroIdentificacion}`      | Registrar nueva dirección al cliente   |
+
 
 
 📥 Ejemplos de Peticiones y Respuestas
