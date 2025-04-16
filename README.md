@@ -32,6 +32,7 @@ spring.jpa.hibernate.ddl-auto=create-drop
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 spring.jpa.properties.hibernate.format_sql=true
+```
 
 ## 📡 Endpoints de la API
 
@@ -52,14 +53,13 @@ spring.jpa.properties.hibernate.format_sql=true
 | POST   | `/api/v1/direcciones/{numeroIdentificacion}`      | Registrar nueva dirección al cliente   |
 
 
-
-📥 Ejemplos de Peticiones y Respuestas
-Crear Cliente
+---
+## 📥 Ejemplos de Peticiones y Respuestas
+### Crear Cliente
+Campo Matriz booleano para identificar cual es la dirección principal
+``` ## Crear Cliente
 POST /api/v1/clientes
 
-json
-Copiar
-Editar
 {
   "tipoIdentificacion": "CEDULA",
   "numeroIdentificacion": "1805232371",
@@ -75,12 +75,13 @@ Editar
     }
   ]
 }
-Buscar Cliente por Nombre
+
+```
+### Buscar Cliente por Nombre
+``` ## Buscar Cliente por Nombre
 GET /api/v1/clientes/buscar?nombre=Alvear
 
-json
-Copiar
-Editar
+
 [
   {
     "id": 1,
@@ -94,19 +95,21 @@ Editar
     "direccion": "Av. Guaytambos miniarica"
   }
 ]
-Agregar Dirección Adicional
+```
+### Agregar Dirección Adicional
+
+``` Agregar Dirección Adicional
 POST /api/v1/direcciones/1805232371
 
-json
-Copiar
-Editar
 {
   "provincia": "Pichincha1",
   "ciudad": "Quitoaaaaaa223",
   "direccion": "Av. Amazonas a y Naciones Unidas",
   "matriz": false
 }
-Listar Direcciones del Cliente
+```
+### Listar Direcciones del Cliente
+``` Listar Direcciones del Cliente
 GET /api/v1/clientes/1/direcciones
 
 json
@@ -129,79 +132,7 @@ Editar
   }
 ]
 
+```
 
 
 
-microServicios
-• Funcionalidad para buscar y obtener un listado de clientes.
-API: http://localhost:8080/api/v1/clientes/buscar?nombre=Alvear
-respuesta esperada
-[
-    {
-        "id": 1,
-        "tipoIdentificacion": "CEDULA",
-        "numeroIdentificacion": "1805232371",
-        "nombres": "cesar Alvear",
-        "correo": "kevin.alvear@email.com",
-        "celular": "1991234567",
-        "provincia": "Tungurahua",
-        "ciudad": "Ambato",
-        "direccion": "Av.  Guaytambos miniarica"
-    }
-]
-• Funcionalidad para crear un nuevo cliente con la dirección matriz
-API : http://localhost:8080/api/v1/clientes
-se crea un booleano en matriz para saber cual es la direccion principal
-{
-  "tipoIdentificacion": "CEDULA",
-  "numeroIdentificacion": "1805232371",
-  "nombres": "cesar Alvear",
-  "correo": "kevin.alvear@email.com",
-  "celular": "1991234567",
-  "direcciones": [{  
-    "provincia": "Tungurahua",
-    "ciudad": "Ambato",
-    "direccion": "Av.  Guaytambos miniarica",
-    "matriz": true
-  }
-  ]
-}
-• Funcionalidad para editar los datos del cliente
-  @PutMapping("/{id}")
-API: http://localhost:8080/api/v1/clientes/1
-• Funcionalidad para eliminar un cliente
-    @DeleteMapping("/{id}")
-API: http://localhost:8080/api/v1/clientes/1
-
-• Funcionalidad para registrar una nueva dirección por cliente
-    @PostMapping("{numeroIdentificacion}")
-API: http://localhost:8080/api/v1/direcciones/1805232371
-ejemplo 
-{
-  "provincia": "Pichincha1",
-  "ciudad": "Quitoaaaaaa223",
-  "direccion": "Av. Amazonas a y Naciones Unidas",
-  "matriz": false
-}
-
-
-• Funcionalidad para listar las direcciones adicionales del cliente
-    @GetMapping("/{clienteId}/direcciones")
-API : http://localhost:8080/api/v1/clientes/1/direcciones
-Respuesta esperada
-[
-    {
-        "id": 1,
-        "provincia": "Tungurahua",
-        "ciudad": "Ambato",
-        "direccion": "Av.  Guaytambos miniarica",
-        "matriz": true
-    },
-    {
-        "id": 2,
-        "provincia": "Pichincha1",
-        "ciudad": "Quitoaaaaaa223",
-        "direccion": "Av. Amazonas a y Naciones Unidas",
-        "matriz": false
-    }
-]
